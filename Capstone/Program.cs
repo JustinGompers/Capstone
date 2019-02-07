@@ -28,8 +28,8 @@ namespace Capstone
 
                 }
             }
-            //vendingMachine.Deposit(10.00m);
-            //vendingMachine.Deposit(10.00m);
+            vendingMachine.Deposit(10.00m);
+            vendingMachine.Deposit(10.00m);
             //vendingMachine.Deposit(4.00m);
             vendingMachine.itemRemoval(ref product, "A7");
             vendingMachine.itemRemoval(ref product, "A1");

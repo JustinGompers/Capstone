@@ -19,7 +19,7 @@ namespace Capstone.Classes
                     if (products[i].productPrice <= amountInMachine)
                     {
                         
-                        Withraw(products[i].productPrice);
+                        Withraw(products[i].productPrice, products[i].productName, products[i].productLocation);
                         products[i].amountInMachine--;
                         switch (products[i].productType)
                         {
