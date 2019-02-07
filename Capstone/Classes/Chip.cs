@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    class Chip : MakesNoises
+    public class Chip : IsEaten
     {
         public string noiseMade { get; }
 

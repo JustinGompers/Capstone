@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    interface MakesNoises
+    interface IsEaten
     {
         string noiseMade { get; }
         void NoiseProduced();
