@@ -6,5 +6,7 @@ namespace Capstone.Classes
 {
     interface MakesNoises
     {
+        string noiseMade { get;}
+        void NoiseProduced() ;
     }
 }
