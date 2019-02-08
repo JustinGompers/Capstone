@@ -55,20 +55,20 @@ namespace CapstoneTests
         public void GettingChangeTest()
         {
 
-            testObject.Deposit(1);
+            decimal input = 2.46m;
 
             Dictionary<string, int> CoinCount = new Dictionary<string, int>
             {
-                {"Quarters", 4},
-                {"Dimes", 0 },
+                {"Quarters", 9},
+                {"Dimes",  2},
                 {"Nickles", 0 },
-                {"Pennies", 0 }
+                {"Pennies", 1 }
                 
             };
    
-            //Dictionary<string, int> result = testObject.GettingChange();
+            Dictionary<string, int> result = testObject.GettingChange(input);
 
-            //CollectionAssert.AreEqual(CoinCount, result);
+            CollectionAssert.AreEqual(CoinCount, result);
 
         }
         
