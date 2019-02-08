@@ -37,16 +37,10 @@ namespace Capstone.Classes
                 amountInserted = depositAmount;
                 amountInMachine += amountInserted;
                 TransactionLog(depositAmount, amountInMachine, typeOfTransaction);
-                HeadingSetter();
-                Console.WriteLine($"\n You deposited! : ${depositAmount.ToString("0.00")}\n Press any key to return to the menu.");
-                Console.ReadKey();
                 return amountInMachine;
             }
             else
             {
-                HeadingSetter();
-                Console.WriteLine($"\n${depositAmount}: There is no such bill as that. You will be returned to the menu.");
-                Console.ReadKey();
                 return 0;
             }
 

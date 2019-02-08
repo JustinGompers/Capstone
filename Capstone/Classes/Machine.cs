@@ -25,7 +25,18 @@ namespace Capstone.Classes
                         {
                             Console.WriteLine("\n How much would you like to deposit?");
                             decimal depositAmount = int.Parse(Console.ReadLine());
-                            Deposit(depositAmount);
+                            HeadingSetter();
+                            decimal returnedDecimal = Deposit(depositAmount);
+                            if (returnedDecimal != 0)
+                            {
+                                Console.WriteLine($"\n You deposited ${depositAmount.ToString("0.00")} into the machine!");
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                Console.WriteLine($"${depositAmount.ToString("0.00")} is not a valid entry.\n Press any key to return to the menu.");
+                                Console.ReadKey();
+                            }
                         }
                         catch
                         {
