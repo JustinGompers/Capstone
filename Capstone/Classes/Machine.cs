@@ -123,6 +123,7 @@ namespace Capstone.Classes
                     inventoryDisplay(products);
                     Console.WriteLine("Enter the Item location of the product you want.");
                     answer = Console.ReadLine();
+                    
                 }
                 else if (answer.Contains('N'))
                 {
