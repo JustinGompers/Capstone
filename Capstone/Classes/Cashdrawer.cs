@@ -10,10 +10,10 @@ namespace Capstone.Classes
         protected decimal amountInMachine { get; private set; }
         protected decimal amountWithTransaction { get; set; }
         protected decimal amountInserted { get; set; }
-        protected int quartersReturned { get; set; }
-        protected int dimesReturned { get; set; }
-        protected int nicklesReturned { get; set; }
-        protected int penniesReturned { get; set; }
+        protected int quartersReturned { get; set; } = 0;
+        protected int dimesReturned { get; set; } = 0;
+        protected int nicklesReturned { get; set; } = 0;
+        protected int penniesReturned { get; set; } = 0;
 
         public Cashdrawer()
         {
@@ -54,7 +54,7 @@ namespace Capstone.Classes
             
         }
 
-        public decimal GettingChange()
+        public Dictionary<string, int> GettingChange()
         {
             string typeOfTransaction = "CHANGED DISPENSED";
             amountWithTransaction = amountInMachine;
@@ -77,10 +77,17 @@ namespace Capstone.Classes
                 penniesReturned = (int)(amountInMachine / .01m);
                 amountInMachine -= (penniesReturned * .01m);
             }
+            Dictionary<string, int> change = new Dictionary<string, int>
+            {
+                {"Quarters", quartersReturned },
+                {"Dimes", dimesReturned },
+                {"Nickles", nicklesReturned },
+                {"Pennies", penniesReturned }
+            };
             TransactionLog(amountWithTransaction, amountInMachine, typeOfTransaction);
             Console.WriteLine($"{quartersReturned} : {dimesReturned} : {nicklesReturned} : {penniesReturned}");
 
-            return amountInMachine;
+            return change;
         }
 
         public void TransactionLog(decimal beforeTansaction, decimal afterTransaction, string actionPerformed)
