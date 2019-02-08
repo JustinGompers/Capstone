@@ -39,12 +39,14 @@ namespace CapstoneTests
         [TestMethod]
         public void WithdrawalTest()
         {
+            decimal productPrice = 3.05m;
+            string itemDeposited = "Potato Crisps";
+            string itemLocation = "A1";
 
-            decimal input = 10.00m;
+            testObject.Deposit(10);
+            bool output = false;
 
-            decimal output = 0.00m;
-
-            decimal result = testObject.Withdraw(input);
+            bool result = testObject.Withdraw(productPrice, itemDeposited, itemLocation);
 
             Assert.AreEqual(output, result);
 

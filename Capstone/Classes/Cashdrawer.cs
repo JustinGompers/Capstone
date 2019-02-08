@@ -52,14 +52,19 @@ namespace Capstone.Classes
 
         }
 
-        public void Withdraw(decimal productPrice, string itemDeposited, string itemLocation)
+        public bool Withdraw(decimal productPrice, string itemDeposited, string itemLocation)
         {
             string typeOfTransaction = itemDeposited + " " + itemLocation;
             amountWithTransaction = amountInMachine;
             amountWithTransaction -= productPrice;
-            Console.WriteLine($"{amountInMachine} : {amountWithTransaction}");
             TransactionLog(amountInMachine, amountWithTransaction, typeOfTransaction);
-            amountInMachine = amountWithTransaction;
+            if (amountInMachine >= productPrice)
+            {
+                amountInMachine = amountWithTransaction;
+                return true;
+            }
+            else return false;
+            
         }
 
         public void GettingChange()
