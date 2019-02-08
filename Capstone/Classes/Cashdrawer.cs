@@ -54,7 +54,7 @@ namespace Capstone.Classes
             
         }
 
-        public void GettingChange()
+        public decimal GettingChange()
         {
             string typeOfTransaction = "CHANGED DISPENSED";
             amountWithTransaction = amountInMachine;
@@ -79,6 +79,8 @@ namespace Capstone.Classes
             }
             TransactionLog(amountWithTransaction, amountInMachine, typeOfTransaction);
             Console.WriteLine($"{quartersReturned} : {dimesReturned} : {nicklesReturned} : {penniesReturned}");
+
+            return amountInMachine;
         }
 
         public void TransactionLog(decimal beforeTansaction, decimal afterTransaction, string actionPerformed)

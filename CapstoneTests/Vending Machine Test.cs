@@ -56,13 +56,25 @@ namespace CapstoneTests
         {
 
             testObject.Deposit(10);
-            decimal input = 10.00m;
 
             decimal amountInMachine = 0.00m;
 
             decimal result = testObject.GettingChange();
 
-            Assert.AreEqual(output, result);
+            Assert.AreEqual(amountInMachine, result);
+
+        }
+        [TestMethod]
+        public void SelectingProductTest()
+        {
+
+            testObject.Deposit(10);
+
+            decimal amountInMachine = 0.00m;
+
+            decimal result = testObject.GettingChange();
+
+            Assert.AreEqual(amountInMachine, result);
 
         }
 
