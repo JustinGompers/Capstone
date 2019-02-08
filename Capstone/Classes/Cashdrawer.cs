@@ -25,11 +25,11 @@ namespace Capstone.Classes
         public void Deposit(decimal depositAmount)
         {
             string typeOfTransaction = "USER DEPOSIT";
-            TransactionLog(amountInMachine, depositAmount, typeOfTransaction);
             if (depositAmount == 1 || depositAmount == 2 || depositAmount == 5 || depositAmount == 10)
             {
                 amountInserted = depositAmount;
                 amountInMachine += amountInserted;
+                TransactionLog(depositAmount, amountInMachine, typeOfTransaction);
                 Console.WriteLine($"${amountInserted} : ${amountInMachine}");
             }
             else
@@ -48,7 +48,7 @@ namespace Capstone.Classes
             amountWithTransaction -= productPrice;
             Console.WriteLine($"{amountInMachine} : {amountWithTransaction}");
             TransactionLog(amountInMachine, amountWithTransaction, typeOfTransaction);
-            amountInMachine -= amountWithTransaction;
+            amountInMachine = amountWithTransaction;
         }
 
         public void GettingChange()
@@ -60,21 +60,22 @@ namespace Capstone.Classes
                 quartersReturned = (int)(amountInMachine / .25m);
                 amountInMachine -= (quartersReturned * .25m);
             }
-            else if (amountInMachine >= .10m)
+            if (amountInMachine >= .10m)
             {
                 dimesReturned = (int)(amountInMachine / .10m);
                 amountInMachine -= (dimesReturned * .10m);
             }
-            else if (amountInMachine >= .05m)
+            if (amountInMachine >= .05m)
             {
                 nicklesReturned = (int)(amountInMachine / .05m);
                 amountInMachine -= (nicklesReturned * .05m);
-            }else
+            }if (amountInMachine >= .01m)
             {
                 penniesReturned = (int)(amountInMachine / .01m);
                 amountInMachine -= (penniesReturned * .01m);
             }
             TransactionLog(amountWithTransaction, amountInMachine, typeOfTransaction);
+            Console.WriteLine($"{quartersReturned} : {dimesReturned} : {nicklesReturned} : {penniesReturned}");
         }
 
         public void TransactionLog(decimal beforeTansaction, decimal afterTransaction, string actionPerformed)

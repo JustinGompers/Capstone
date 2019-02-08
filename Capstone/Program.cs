@@ -11,10 +11,11 @@ namespace Capstone
         {
             Machine vendingMachine = new Machine();
             List<Product> product = new List<Product>();
-            Console.ReadKey();
+            bool isDone = false;
             string line = "";
             string[] lineArray = new string[4];
             string directory = @"C:\Users\Justin Gompers\Pairs\c-module-1-capstone-team-3\etc\vendingmachine.csv";
+            //Below Reads the excel sheet and makes an array of products from the data read
             using (StreamReader sr = new StreamReader(directory))
             {
                 while (!sr.EndOfStream)
@@ -28,12 +29,21 @@ namespace Capstone
 
                 }
             }
-            vendingMachine.Deposit(10.00m);
-            vendingMachine.Deposit(10.00m);
+            //Start of the user interface 
+            
+            do
+            {
+
+            } while (!isDone);
+
+            //vendingMachine.Deposit(10.00m);
+            //vendingMachine.Deposit(10.00m);
             //vendingMachine.Deposit(4.00m);
-            vendingMachine.itemRemoval(ref product, "A7");
-            vendingMachine.itemRemoval(ref product, "A1");
-            vendingMachine.inventoryDisplay(product);
+            //vendingMachine.itemRemoval(ref product, "A7");
+            //vendingMachine.itemRemoval(ref product, "A1");
+            //vendingMachine.inventoryDisplay(product);
+            //vendingMachine.GettingChange();
+            Console.ReadKey();
         }
     }
 }
