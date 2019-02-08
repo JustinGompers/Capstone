@@ -108,6 +108,35 @@ namespace Capstone.Classes
             }
             Console.ReadKey();
         }
+        public void DispensingProducts(List<Product> products)
+        {
+            bool isDone = false;
+            do
+            {
+                HeadingSetter();
+                inventoryDisplay(products);
+                Console.WriteLine("\n Would you like to buy a product?  (Y)es/(N)o");
+                string answer = Console.ReadLine().ToUpper();
+                if (answer.Contains('Y'))
+                {
+                    HeadingSetter();
+                    inventoryDisplay(products);
+                    Console.WriteLine("Enter the Item location of the product you want.");
+                    answer = Console.ReadLine();
+                }
+                else if (answer.Contains('N'))
+                {
+                    isDone = true;
+                }
+                else
+                {
+                    HeadingSetter();
+                    Console.WriteLine("\n That is not a correct input.\n Press any key to return to the menu.");
+                    isDone = true;
+                }
+            } while (!isDone);
+
+        }
 
     }
 }
