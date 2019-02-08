@@ -35,8 +35,7 @@ namespace Capstone.Classes
                         }
                         break;
                     case "2":
-                        HeadingSetter();
-                        inventoryDisplay(products);
+                        DispensingProducts(products);
                         break;
                     case "3":
                         isExiting = true;
@@ -60,23 +59,44 @@ namespace Capstone.Classes
                     productExists = true;
                     if (products[i].productPrice <= amountInMachine)
                     {
-                        
-                        Withdraw(products[i].productPrice, products[i].productName, products[i].productLocation);
-                        products[i].amountInMachine--;
-                        switch (products[i].productType)
+                        if (products[i].amountInMachine > 0)
                         {
-                            case "Chip":
-                                Console.WriteLine($"You received a bag of chips!\nCrunch Crunch, Yum!");
-                                break;
-                            case "Candy":
-                                Console.WriteLine($" You received some candy!\nMunch, Munch, Yum!");
-                                break;
-                            case "Drink":
-                                Console.WriteLine($"You received a nice cold drink!\nGlug Glug, Yum!");
-                                break;
-                            case "Gum":
-                                Console.WriteLine($" You received some candy!\nMunch, Munch, Yum!");
-                                break;
+                            Withdraw(products[i].productPrice, products[i].productName, products[i].productLocation);
+                            products[i].amountInMachine--;
+                            switch (products[i].productType)
+                            {
+                                case "Chip":
+                                    HeadingSetter();
+                                    inventoryDisplay(products);
+                                    Console.WriteLine($"\n You received a bag of chips!\n Crunch Crunch, Yum!");
+                                    Console.ReadKey();
+                                    break;
+                                case "Candy":
+                                    HeadingSetter();
+                                    inventoryDisplay(products);
+                                    Console.WriteLine($"\n You received some candy!\n Munch, Munch, Yum!");
+                                    Console.ReadKey();
+                                    break;
+                                case "Drink":
+                                    HeadingSetter();
+                                    inventoryDisplay(products);
+                                    Console.WriteLine($"\n You received a nice cold drink!\n Glug Glug, Yum!");
+                                    Console.ReadKey();
+                                    break;
+                                case "Gum":
+                                    HeadingSetter();
+                                    inventoryDisplay(products);
+                                    Console.WriteLine($"\n You received some candy!\n Munch, Munch, Yum!");
+                                    Console.ReadKey();
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            HeadingSetter();
+                            inventoryDisplay(products);
+                            Console.WriteLine($"\n {products[i].productName} is Sold Out..... Sorry!");
+                            Console.ReadKey();
                         }
                     }
                     else
@@ -94,19 +114,19 @@ namespace Capstone.Classes
         }
         public void inventoryDisplay(List<Product> products)
         {
-            Console.WriteLine("Location\tName\t$Price$\tAmountLeft");
+            Console.WriteLine("Location    Name\t   $Price$\tAmountLeft");
+            Console.WriteLine("----------------------------------------------------");
             for (int i = 0; i < products.Count; i++)
             {
                 if (products[i].amountInMachine == 0)
                 {
-                    Console.WriteLine($"{products[i].productLocation} : \t{products[i].productName.PadRight(20)}{products[i].productPrice}\t'SOLD OUT'");
+                    Console.WriteLine($"{products[i].productLocation} :\t{products[i].productName.PadRight(20)}${products[i].productPrice}\t\t'SOLD OUT'");
                 }
                 else
                 {
-                    Console.WriteLine($"{products[i].productLocation} : \t{products[i].productName.PadRight(20)}\t{products[i].productPrice}\t{products[i].amountInMachine}");
+                    Console.WriteLine($"{products[i].productLocation} :\t{products[i].productName.PadRight(20)}${products[i].productPrice}\t\t{products[i].amountInMachine}");
                 }
             }
-            Console.ReadKey();
         }
         public void DispensingProducts(List<Product> products)
         {
@@ -117,22 +137,24 @@ namespace Capstone.Classes
                 inventoryDisplay(products);
                 Console.WriteLine("\n Would you like to buy a product?  (Y)es/(N)o");
                 string answer = Console.ReadLine().ToUpper();
-                if (answer.Contains('Y'))
+                if (answer == "Y")
                 {
                     HeadingSetter();
                     inventoryDisplay(products);
-                    Console.WriteLine("Enter the Item location of the product you want.");
-                    answer = Console.ReadLine();
-                    
+                    Console.WriteLine("\n Enter the Item location of the product you want.");
+                    answer = Console.ReadLine().ToUpper();
+                    itemRemoval(ref products, answer);
                 }
-                else if (answer.Contains('N'))
+                else if (answer == "N")
                 {
                     isDone = true;
                 }
                 else
                 {
                     HeadingSetter();
+                    inventoryDisplay(products);
                     Console.WriteLine("\n That is not a correct input.\n Press any key to return to the menu.");
+                    Console.ReadKey();
                     isDone = true;
                 }
             } while (!isDone);
