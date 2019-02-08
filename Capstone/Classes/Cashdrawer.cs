@@ -99,23 +99,46 @@ namespace Capstone.Classes
 
             using (StreamWriter sw = new StreamWriter(fullpath, true))
             {
-                sw.WriteLine($"{DateTime.UtcNow}  {actionPerformed}:  ${beforeTansaction}    ${afterTransaction}");
+                sw.WriteLine($"{DateTime.UtcNow}  {actionPerformed.PadRight(20)}:  ${beforeTansaction}    ${afterTransaction}");
             }
 
         }
 
         public void SalesRecordLog(List<Product> products, decimal totalSales)
         {
+            string[] lineArray = new string[3];
             string directory = Environment.CurrentDirectory;
             string path = @"etc\Sales_Record.txt";
             string fullpath = Path.Combine(directory, path);
-
+            string line = "";
+            using (StreamReader sr = new StreamReader(fullpath))
+            {
+                while (!sr.EndOfStream)
+                {
+                    line = sr.ReadLine();
+                    for (int i = 0; i < products.Count; i++)
+                    {
+                        if (line.Contains('|'))
+                        {
+                            lineArray = line.Split('|');
+                            if (lineArray[0].Contains(products[i].productName))
+                            {
+                                products[i].amountSold += int.Parse(lineArray[1]);
+                                products[i].totalAmountMoneyMade += decimal.Parse(lineArray[2]);
+                                totalSales += decimal.Parse(lineArray[2]);
+                            }
+                        }
+                    }
+                }
+            }
             using (StreamWriter sw = new StreamWriter(fullpath, false))
             {
+                sw.WriteLine("Name\t\tAmount Sold\t\tTotal Product Sales");
                 for (int i = 0; i < products.Count; i++)
                 {
-
+                    sw.WriteLine($"{products[i].productName.PadRight(18)} |\t {products[i].amountSold}\t |\t  {products[i].totalAmountMoneyMade}");
                 }
+                sw.WriteLine($"\n\n**TotalSales**  ${totalSales}");
             }
         }
     }

@@ -67,6 +67,7 @@ namespace Capstone.Classes
                         break;
                 }
             } while (!isExiting);
+            SalesRecordLog(products, TotalSales);
             return amountInMachine;
         }
 
@@ -89,6 +90,9 @@ namespace Capstone.Classes
                         {
                             Withdraw(products[i].productPrice, products[i].productName, products[i].productLocation);
                             products[i].amountInMachine--;
+                            products[i].amountSold++;
+                            TotalSales += products[i].productPrice;
+                            products[i].totalAmountMoneyMade += products[i].productPrice;
                             switch (products[i].productType)
                             {
                                 case "Chip":

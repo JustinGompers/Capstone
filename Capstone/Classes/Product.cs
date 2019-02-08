@@ -11,6 +11,8 @@ namespace Capstone.Classes
         public decimal productPrice { get; set; }
         public string productType { get; set; }
         public int amountInMachine { get; set; }
+        public int amountSold { get; set; }
+        public decimal totalAmountMoneyMade { get; set; }
 
         public Product(string location, string name, decimal price, string type)
         {
@@ -19,6 +21,8 @@ namespace Capstone.Classes
             productPrice = price;
             productType = type;
             amountInMachine = 5;
+            amountSold = 0;
+            totalAmountMoneyMade = 0;
         }
 
         public Product()
