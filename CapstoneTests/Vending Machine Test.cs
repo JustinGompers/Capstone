@@ -71,7 +71,20 @@ namespace CapstoneTests
             CollectionAssert.AreEqual(CoinCount, result);
 
         }
-        
+        [TestMethod]
+        public void NotEnoughtMoneyTest()
+        {
+
+            decimal input = 1.00m;
+
+            bool productPrice = false;
+
+            decimal result = testObject.Deposit(input);
+
+            Assert.AreEqual(input, result);
+
+        }
+
 
     }
 }
