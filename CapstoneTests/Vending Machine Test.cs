@@ -1,6 +1,6 @@
 using Capstone.Classes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+using System.Collections.Generic;
 
 namespace CapstoneTests
 {
@@ -55,13 +55,20 @@ namespace CapstoneTests
         public void GettingChangeTest()
         {
 
-            testObject.Deposit(10);
+            testObject.Deposit(1);
 
-            decimal amountInMachine = 0.00m;
+            Dictionary<string, int> CoinCount = new Dictionary<string, int>
+            {
+                {"Quarters", 4},
+                {"Dimes", 0 },
+                {"Nickles", 0 },
+                {"Pennies", 0 }
+                
+            };
+   
+            Dictionary<string, int> result = testObject.GettingChange();
 
-            decimal result = testObject.GettingChange();
-
-            //CollectionAssert.AreEqual(amountInMachine, result);
+            CollectionAssert.AreEqual(CoinCount, result);
 
         }
         
