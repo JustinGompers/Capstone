@@ -103,15 +103,18 @@ namespace Capstone.Classes
 
         }
 
-        public void SalesRecordLog()
+        public void SalesRecordLog(List<Product> products, decimal totalSales)
         {
             string directory = Environment.CurrentDirectory;
             string path = @"etc\Sales_Record.txt";
             string fullpath = Path.Combine(directory, path);
 
-            using (StreamWriter sr = new StreamWriter(fullpath, true))
+            using (StreamWriter sw = new StreamWriter(fullpath, false))
             {
-                
+                for (int i = 0; i < products.Count; i++)
+                {
+
+                }
             }
         }
     }
