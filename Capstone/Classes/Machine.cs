@@ -14,7 +14,7 @@ namespace Capstone.Classes
             Console.WriteLine("=======================================================================================================================");
             Console.WriteLine($"Amount in the machine:  ${amountInMachine.ToString("0.00")}");
         }
-        public bool MenuSetup()
+        public bool MenuSetup(List<Product> products)
         {
             bool isExiting = false;
             do
@@ -34,7 +34,7 @@ namespace Capstone.Classes
                             decimal depositAmount = int.Parse(Console.ReadLine());
                             Deposit(depositAmount);
                             HeadingSetter();
-                            Console.WriteLine($"\n You deposited! : {depositAmount.ToString("0.00")}");
+                            Console.WriteLine($"\n You deposited! : {depositAmount.ToString("0.00")}\n Press any key to return to the menu.");
                             Console.ReadKey();
                         }
                         catch
@@ -45,6 +45,8 @@ namespace Capstone.Classes
                         }
                         break;
                     case "2":
+                        HeadingSetter();
+                        inventoryDisplay(products);
                         break;
                     case "3":
                         isExiting = true;
@@ -69,7 +71,7 @@ namespace Capstone.Classes
                     if (products[i].productPrice <= amountInMachine)
                     {
                         
-                        Withraw(products[i].productPrice, products[i].productName, products[i].productLocation);
+                        Withdraw(products[i].productPrice, products[i].productName, products[i].productLocation);
                         products[i].amountInMachine--;
                         switch (products[i].productType)
                         {

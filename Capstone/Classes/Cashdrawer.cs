@@ -40,7 +40,7 @@ namespace Capstone.Classes
 
         }
 
-        public void Withraw(decimal productPrice, string itemDeposited, string itemLocation)
+        public void Withdraw(decimal productPrice, string itemDeposited, string itemLocation)
         {
             string typeOfTransaction = itemDeposited + " " + itemLocation;
             amountWithTransaction = amountInMachine;
