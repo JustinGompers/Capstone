@@ -20,9 +20,48 @@ namespace CapstoneTests
 
             decimal result = testObject.Deposit(input);
 
-            
-
+            Assert.AreEqual(output, result);
 
         }
+        [TestMethod]
+        public void DepositWrongBillTest()
+        {
+
+            decimal input = 100.00m;
+
+            decimal output = 0.00m;
+
+            decimal result = testObject.Deposit(input);
+
+            Assert.AreEqual(output, result);
+
+        }
+        [TestMethod]
+        public void WithdrawalTest()
+        {
+
+            decimal input = 10.00m;
+
+            decimal output = 0.00m;
+
+            decimal result = testObject.Withdraw(input);
+
+            Assert.AreEqual(output, result);
+
+        }
+        [TestMethod]
+        public void GettingChangeTest()
+        {
+
+            decimal input = 100.00m;
+
+            decimal output = 0.00m;
+
+            decimal result = testObject.Deposit(input);
+
+            Assert.AreEqual(output, result);
+
+        }
+
     }
 }
