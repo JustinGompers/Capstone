@@ -12,6 +12,7 @@ namespace Capstone
             Machine vendingMachine = new Machine();
             List<Product> product = new List<Product>();
             bool isDone = false;
+            decimal totalLeftInMachine = 0;
             bool startMachine = false;
             string line = "";
             string[] lineArray = new string[4];
@@ -42,10 +43,11 @@ namespace Capstone
                     do
                     {
                         vendingMachine.HeadingSetter();
-                        isDone = vendingMachine.MenuSetup(product);
+                        totalLeftInMachine = vendingMachine.MenuSetup(product);
+                        isDone = true;
                     } while (!isDone);
                     startMachine = true;
-                    Dictionary<string, int> userChange = vendingMachine.GettingChange();
+                    Dictionary<string, int> userChange = vendingMachine.GettingChange(totalLeftInMachine);
                     vendingMachine.HeadingSetter();
                     Console.WriteLine("\n Here is your leftover change!");
                     Console.WriteLine("--------------------------------------");

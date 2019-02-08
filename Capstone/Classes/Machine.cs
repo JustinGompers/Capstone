@@ -16,7 +16,7 @@ namespace Capstone.Classes
             Console.WriteLine($" Amount in the machine:  ${amountInMachine.ToString("0.00")}");
         }
 
-        public bool MenuSetup(List<Product> products)
+        public decimal MenuSetup(List<Product> products)
         {
             bool isExiting = false;
             do
@@ -67,7 +67,7 @@ namespace Capstone.Classes
                         break;
                 }
             } while (!isExiting);
-            return true;
+            return amountInMachine;
         }
         public void itemRemoval(ref List<Product> products, string itemwantedlocation)
         {
