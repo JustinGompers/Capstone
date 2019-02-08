@@ -29,7 +29,7 @@ namespace Capstone.Classes
             Console.WriteLine($"Amount in the machine:  ${amountInMachine.ToString("0.00")}");
         }
 
-        public void Deposit(decimal depositAmount)
+        public decimal Deposit(decimal depositAmount)
         {
             string typeOfTransaction = "USER DEPOSIT";
             if (depositAmount == 1 || depositAmount == 2 || depositAmount == 5 || depositAmount == 10)
@@ -40,12 +40,14 @@ namespace Capstone.Classes
                 HeadingSetter();
                 Console.WriteLine($"\n You deposited! : ${depositAmount.ToString("0.00")}\n Press any key to return to the menu.");
                 Console.ReadKey();
+                return amountInMachine;
             }
             else
             {
                 HeadingSetter();
                 Console.WriteLine($"\n${depositAmount}: There is no such bill as that. You will be returned to the menu.");
                 Console.ReadKey();
+                return 0;
             }
 
         }
