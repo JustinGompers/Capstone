@@ -7,6 +7,7 @@ namespace Capstone.Classes
 {
     public class Machine : Cashdrawer
     {
+        public decimal TotalSales { get; set; }
         public void HeadingSetter()
         {
             Console.Clear();

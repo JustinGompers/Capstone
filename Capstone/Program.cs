@@ -45,9 +45,14 @@ namespace Capstone
                         isDone = vendingMachine.MenuSetup(product);
                     } while (!isDone);
                     startMachine = true;
-                    vendingMachine.GettingChange();
+                    Dictionary<string, int> userChange = vendingMachine.GettingChange();
                     vendingMachine.HeadingSetter();
-                    Console.WriteLine($"");
+                    Console.WriteLine("\n Here is your leftover change!");
+                    Console.WriteLine("--------------------------------------");
+                    foreach (KeyValuePair<string, int> change in userChange)
+                    {
+                        Console.WriteLine($" {change.Key.PadRight(8)} : {change.Value}");
+                    }
                     Console.WriteLine("\n Thank you for coming!\n Have a great day!");
                     Console.ReadKey();
                     Environment.Exit(0);
