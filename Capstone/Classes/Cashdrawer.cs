@@ -102,5 +102,17 @@ namespace Capstone.Classes
             }
 
         }
+
+        public void SalesRecordLog()
+        {
+            string directory = Environment.CurrentDirectory;
+            string path = @"etc\Sales_Record.txt";
+            string fullpath = Path.Combine(directory, path);
+
+            using (StreamWriter sr = new StreamWriter(fullpath, true))
+            {
+                
+            }
+        }
     }
 }
