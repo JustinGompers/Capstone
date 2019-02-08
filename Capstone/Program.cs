@@ -42,7 +42,7 @@ namespace Capstone
                     do
                     {
                         vendingMachine.HeadingSetter();
-                        isDone = vendingMachine.MenuSetup();
+                        isDone = vendingMachine.MenuSetup(product);
                     } while (!isDone);
                     startMachine = true;
                 } else if (userAnswer.Contains('N'))

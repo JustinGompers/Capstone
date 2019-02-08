@@ -7,13 +7,6 @@ namespace Capstone.Classes
 {
     public class Machine : Cashdrawer
     {
-        public void HeadingSetter()
-        {
-            Console.Clear();
-            Console.WriteLine("\t\t\t\t    Welcome to Umbrella Corp's Vendo-Matic 500");
-            Console.WriteLine("=======================================================================================================================");
-            Console.WriteLine($"Amount in the machine:  ${amountInMachine.ToString("0.00")}");
-        }
         public bool MenuSetup(List<Product> products)
         {
             bool isExiting = false;
@@ -33,9 +26,6 @@ namespace Capstone.Classes
                             Console.WriteLine("\n How much would you like to deposit?");
                             decimal depositAmount = int.Parse(Console.ReadLine());
                             Deposit(depositAmount);
-                            HeadingSetter();
-                            Console.WriteLine($"\n You deposited! : {depositAmount.ToString("0.00")}\n Press any key to return to the menu.");
-                            Console.ReadKey();
                         }
                         catch
                         {

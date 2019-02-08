@@ -21,6 +21,13 @@ namespace Capstone.Classes
             amountInserted = 0;
 
         }
+        public void HeadingSetter()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t\t\t    Welcome to Umbrella Corp's Vendo-Matic 500");
+            Console.WriteLine("=======================================================================================================================");
+            Console.WriteLine($"Amount in the machine:  ${amountInMachine.ToString("0.00")}");
+        }
 
         public void Deposit(decimal depositAmount)
         {
@@ -30,11 +37,14 @@ namespace Capstone.Classes
                 amountInserted = depositAmount;
                 amountInMachine += amountInserted;
                 TransactionLog(depositAmount, amountInMachine, typeOfTransaction);
+                HeadingSetter();
+                Console.WriteLine($"\n You deposited! : ${depositAmount.ToString("0.00")}\n Press any key to return to the menu.");
+                Console.ReadKey();
             }
             else
             {
-                Console.Clear();
-                Console.WriteLine($"${depositAmount}: There is no such bill as that. You will be returned to the menu.");
+                HeadingSetter();
+                Console.WriteLine($"\n${depositAmount}: There is no such bill as that. You will be returned to the menu.");
                 Console.ReadKey();
             }
 
