@@ -80,9 +80,11 @@ namespace Capstone.Classes
 
         public void TransactionLog(decimal beforeTansaction, decimal afterTransaction, string actionPerformed)
         {
-            string directory = @"C:\Users\Justin Gompers\Pairs\c-module-1-capstone-team-3\etc\Transaction_Record.txt";
+            string directory = Environment.CurrentDirectory;
+            string path = @"etc\Transaction_Record.txt";
+            string fullpath = Path.Combine(directory, path);
 
-            using (StreamWriter sw = new StreamWriter(directory, true))
+            using (StreamWriter sw = new StreamWriter(fullpath, true))
             {
                 sw.WriteLine($"{DateTime.UtcNow}  {actionPerformed}:  ${beforeTansaction}    ${afterTransaction}");
             }
