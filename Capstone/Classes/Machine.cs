@@ -7,13 +7,21 @@ namespace Capstone.Classes
 {
     public class Machine : Cashdrawer
     {
+        public void HeadingSetter()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t\t\t    Welcome to Umbrella Corp's Vendo-Matic 500");
+            Console.WriteLine("=======================================================================================================================");
+            Console.WriteLine($" Amount in the machine:  ${amountInMachine.ToString("0.00")}");
+        }
+
         public bool MenuSetup(List<Product> products)
         {
             bool isExiting = false;
             do
             {
                 HeadingSetter();
-                Console.WriteLine("\nMenu Options:\n Please enter a number for the following options");
+                Console.WriteLine("\n Menu Options:\n Please enter a number for the following options");
                 Console.WriteLine("\n 1.) Deposit Money\n 2.) View Inventory\n 3.) Exit Vending Machine");
 
                 string answer = Console.ReadLine();
@@ -34,7 +42,7 @@ namespace Capstone.Classes
                             }
                             else
                             {
-                                Console.WriteLine($"${depositAmount.ToString("0.00")} is not a valid entry.\n Press any key to return to the menu.");
+                                Console.WriteLine($" ${depositAmount.ToString("0.00")} is not a valid entry.\n Press any key to return to the menu.");
                                 Console.ReadKey();
                             }
                         }

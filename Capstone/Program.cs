@@ -45,6 +45,12 @@ namespace Capstone
                         isDone = vendingMachine.MenuSetup(product);
                     } while (!isDone);
                     startMachine = true;
+                    vendingMachine.GettingChange();
+                    vendingMachine.HeadingSetter();
+                    Console.WriteLine($"");
+                    Console.WriteLine("\n Thank you for coming!\n Have a great day!");
+                    Console.ReadKey();
+                    Environment.Exit(0);
                 } else if (userAnswer.Contains('N'))
                 {
                     vendingMachine.HeadingSetter();
@@ -55,13 +61,10 @@ namespace Capstone
                 else
                 {
                     Console.Clear();
-                    Console.WriteLine("The entered data was ");
+                    Console.WriteLine("The entered data was in correct.\n Press any key to continue");
+                    Console.ReadKey();
                 }
             } while (!startMachine);
-            vendingMachine.HeadingSetter();
-            Console.WriteLine("\n Thank you for coming!\n Have a great day!");
-            Console.ReadKey();
-            Environment.Exit(0);
 
             //vendingMachine.Deposit(10.00m);
             //vendingMachine.Deposit(10.00m);

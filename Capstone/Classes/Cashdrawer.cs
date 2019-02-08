@@ -21,13 +21,6 @@ namespace Capstone.Classes
             amountInserted = 0;
 
         }
-        public void HeadingSetter()
-        {
-            Console.Clear();
-            Console.WriteLine("\t\t\t\t    Welcome to Umbrella Corp's Vendo-Matic 500");
-            Console.WriteLine("=======================================================================================================================");
-            Console.WriteLine($"Amount in the machine:  ${amountInMachine.ToString("0.00")}");
-        }
 
         public decimal Deposit(decimal depositAmount)
         {
