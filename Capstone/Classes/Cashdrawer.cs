@@ -56,6 +56,7 @@ namespace Capstone.Classes
 
         public Dictionary<string, int> GettingChange(decimal totalLeftInMachine)
         {
+            amountInMachine = totalLeftInMachine;
             string typeOfTransaction = "CHANGED DISPENSED";
             amountWithTransaction = amountInMachine;
             if (amountInMachine >= .25m)

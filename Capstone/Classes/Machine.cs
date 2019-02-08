@@ -69,6 +69,12 @@ namespace Capstone.Classes
             } while (!isExiting);
             return amountInMachine;
         }
+
+        public Dictionary<string, int> GettingChange()
+        {
+            throw new NotImplementedException();
+        }
+
         public void itemRemoval(ref List<Product> products, string itemwantedlocation)
         {
             bool productExists = false;
