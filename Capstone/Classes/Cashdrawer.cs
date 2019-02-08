@@ -121,6 +121,8 @@ namespace Capstone.Classes
                         if (line.Contains('|'))
                         {
                             lineArray = line.Split('|');
+                            lineArray[1] = lineArray[1].Replace('$', ' ');
+                            lineArray[2] = lineArray[2].Replace('$', ' ');
                             if (lineArray[0].Contains(products[i].productName))
                             {
                                 products[i].amountSold += int.Parse(lineArray[1]);
@@ -133,12 +135,14 @@ namespace Capstone.Classes
             }
             using (StreamWriter sw = new StreamWriter(fullpath, false))
             {
-                sw.WriteLine("Name\t\tAmount Sold\t\tTotal Product Sales");
+                sw.WriteLine("Name\t\t    Amount Sold\t  Total Product Sales");
+                sw.WriteLine("======================================================================");
                 for (int i = 0; i < products.Count; i++)
                 {
-                    sw.WriteLine($"{products[i].productName.PadRight(18)} |\t {products[i].amountSold}\t |\t  {products[i].totalAmountMoneyMade}");
+                    sw.WriteLine($"{products[i].productName.PadRight(18)} |\t {products[i].amountSold}\t |\t  ${products[i].totalAmountMoneyMade}");
                 }
-                sw.WriteLine($"\n\n**TotalSales**  ${totalSales}");
+                sw.WriteLine();
+                sw.WriteLine($"**TotalSales**  ${totalSales}");
             }
         }
     }
