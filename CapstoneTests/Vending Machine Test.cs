@@ -44,7 +44,7 @@ namespace CapstoneTests
             string itemLocation = "A1";
 
             testObject.Deposit(10);
-            bool output = false;
+            bool output = true;
 
             bool result = testObject.Withdraw(productPrice, itemDeposited, itemLocation);
 
@@ -55,11 +55,12 @@ namespace CapstoneTests
         public void GettingChangeTest()
         {
 
-            decimal input = 100.00m;
+            testObject.Deposit(10);
+            decimal input = 10.00m;
 
-            decimal output = 0.00m;
+            decimal amountInMachine = 0.00m;
 
-            decimal result = testObject.Deposit(input);
+            decimal result = testObject.GettingChange();
 
             Assert.AreEqual(output, result);
 
