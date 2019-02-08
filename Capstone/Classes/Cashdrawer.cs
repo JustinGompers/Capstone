@@ -30,7 +30,6 @@ namespace Capstone.Classes
                 amountInserted = depositAmount;
                 amountInMachine += amountInserted;
                 TransactionLog(depositAmount, amountInMachine, typeOfTransaction);
-                Console.WriteLine($"${amountInserted} : ${amountInMachine}");
             }
             else
             {

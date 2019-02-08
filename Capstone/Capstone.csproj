@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Update="etc\Transaction_Record.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="etc\vendingmachine.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

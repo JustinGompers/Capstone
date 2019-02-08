@@ -34,19 +34,20 @@ namespace Capstone
             }
             //Start of the user interface
             do {
-                Console.WriteLine("\t\t\t\t    Welcome to Umbrella Corp's Vendo-Matic 500");
-                Console.WriteLine("=======================================================================================================================");
+                vendingMachine.HeadingSetter();
                 Console.Write("\n\n Would you like to use our machine?  (Y)es/(N)o   ");
                 string userAnswer = Console.ReadLine().ToUpper();
                 if (userAnswer.Contains('Y'))
                 {
                     do
                     {
-                        vendingMachine.inventoryDisplay(product);
+                        vendingMachine.HeadingSetter();
+                        isDone = vendingMachine.MenuSetup();
                     } while (!isDone);
+                    startMachine = true;
                 } else if (userAnswer.Contains('N'))
                 {
-                    Console.Clear();
+                    vendingMachine.HeadingSetter();
                     Console.WriteLine(" Thank you for coming!\n Have a great day!");
                     Console.ReadKey();
                     Environment.Exit(0);
@@ -57,7 +58,10 @@ namespace Capstone
                     Console.WriteLine("The entered data was ");
                 }
             } while (!startMachine);
-
+            vendingMachine.HeadingSetter();
+            Console.WriteLine("\n Thank you for coming!\n Have a great day!");
+            Console.ReadKey();
+            Environment.Exit(0);
 
             //vendingMachine.Deposit(10.00m);
             //vendingMachine.Deposit(10.00m);
