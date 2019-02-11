@@ -33,8 +33,7 @@ namespace Capstone.Classes
                         try
                         {
                             Console.WriteLine("\n How much would you like to deposit?");
-                            double depositAnswer = double.Parse(Console.ReadLine());
-                            decimal depositAmount = (decimal)depositAnswer;
+                            decimal depositAmount = int.Parse(Console.ReadLine());
                             HeadingSetter();
                             decimal returnedDecimal = Deposit(depositAmount);
                             if (returnedDecimal != 0)
@@ -44,7 +43,7 @@ namespace Capstone.Classes
                             }
                             else
                             {
-                                Console.WriteLine($" ${depositAmount.ToString("0.00")} is not a valid entry.\n Press any key to return to the menu.");
+                                Console.WriteLine($"\n ${depositAmount.ToString("0.00")} is not a valid entry.\n Press any key to return to the menu.");
                                 Console.ReadKey();
                             }
                         }
@@ -154,11 +153,11 @@ namespace Capstone.Classes
             {
                 if (products[i].amountInMachine == 0)
                 {
-                    Console.WriteLine($"{products[i].productLocation} :\t{products[i].productName.PadRight(20)}${products[i].productPrice}\t\t'SOLD OUT'");
+                    Console.WriteLine($"{products[i].productLocation} :\t{products[i].productName.PadRight(20)}${products[i].productPrice.ToString("0.00")}\t\t'SOLD OUT'");
                 }
                 else
                 {
-                    Console.WriteLine($"{products[i].productLocation} :\t{products[i].productName.PadRight(20)}${products[i].productPrice}\t\t{products[i].amountInMachine}");
+                    Console.WriteLine($"{products[i].productLocation} :\t{products[i].productName.PadRight(20)}${products[i].productPrice.ToString("0.00")}\t\t{products[i].amountInMachine}");
                 }
             }
         }
@@ -247,6 +246,7 @@ namespace Capstone.Classes
                                     inventoryDisplay(products);
                                     Console.WriteLine($" {products[i].productName} price has been changed!");
                                     Console.ReadKey();
+                                    i = products.Count;
                                 }
                                 catch (Exception)
                                 {
@@ -254,13 +254,8 @@ namespace Capstone.Classes
                                     HeadingSetter();
                                     Console.WriteLine("\n You entered an invalid price.\n You will be sent back to the admin menu.");
                                     Console.ReadKey();
+                                    i = products.Count;
                                 }
-                            }
-                            else
-                            {
-                                HeadingSetter();
-                                Console.WriteLine("\n The product you entered is invalid.\n You will be sent back to the admin menu.");
-                                Console.ReadKey();
                             }
                         }
                         break;

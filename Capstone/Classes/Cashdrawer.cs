@@ -25,10 +25,17 @@ namespace Capstone.Classes
         public decimal Deposit(decimal depositAmount)
         {
             string typeOfTransaction = "USER DEPOSIT";
-            amountInserted = depositAmount;
-            amountInMachine += amountInserted;
-            TransactionLog(depositAmount, amountInMachine, typeOfTransaction);
-            return amountInMachine;
+            if (depositAmount == 1 || depositAmount == 2 || depositAmount == 5 || depositAmount == 10)
+            {
+                amountInserted = depositAmount;
+                amountInMachine += amountInserted;
+                TransactionLog(depositAmount, amountInMachine, typeOfTransaction);
+                return amountInMachine;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public bool Withdraw(decimal productPrice, string itemDeposited, string itemLocation)
