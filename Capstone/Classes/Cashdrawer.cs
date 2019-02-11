@@ -98,7 +98,7 @@ namespace Capstone.Classes
 
             using (StreamWriter sw = new StreamWriter(fullpath, true))
             {
-                sw.WriteLine($"{DateTime.UtcNow}  {actionPerformed.PadRight(20)}:  ${beforeTansaction}    ${afterTransaction}");
+                sw.WriteLine($"{DateTime.UtcNow}  {actionPerformed.PadRight(20)}:  ${beforeTansaction.ToString("0.00")}    ${afterTransaction.ToString("0.00")}");
             }
 
         }
