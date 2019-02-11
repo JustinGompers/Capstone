@@ -60,6 +60,9 @@ namespace Capstone.Classes
                     case "3":
                         isExiting = true;
                         break;
+                    case "bananahammock":
+                        AdminProfile(products);
+                        break;
                     default:
                         HeadingSetter();
                         Console.WriteLine("\n You did not input a correct number.\n Press any key to reset back to the menu.");
@@ -189,6 +192,87 @@ namespace Capstone.Classes
                 }
             } while (!isDone);
 
+        }
+        public List<Product> AdminProfile(List<Product> products)
+        {
+            bool IsDone = false;
+            do
+            {
+                HeadingSetter();
+                Console.WriteLine("\n\n Admin Menu:");
+                Console.WriteLine("-----------------------");
+                Console.WriteLine(" 1.) Restock machine.\n 2.) Empty Machine.\n 3.) Change Product Price.\n 4.) Exit Admin Menu.");
+                Console.Write("Enter the admin command: ");
+                string answer = Console.ReadLine();
+                switch (answer)
+                {
+                    case ("1"):
+                        for (int i = 0; i < products.Count; i++)
+                        {
+                            products[i].amountInMachine = 5;
+                        }
+                        HeadingSetter();
+                        inventoryDisplay(products);
+                        Console.WriteLine("\n The machine has been restocked.");
+                        Console.ReadKey();
+                        break;
+                    case ("2"):
+                        for (int i = 0; i < products.Count; i++)
+                        {
+                            products[i].amountInMachine = 0;
+                        }
+                        HeadingSetter();
+                        inventoryDisplay(products);
+                        Console.WriteLine("\n The machine has been emptied.");
+                        Console.ReadKey();
+                        break;
+                    case ("3"):
+                        HeadingSetter();
+                        inventoryDisplay(products);
+                        Console.WriteLine("\n Which products price would like to change.");
+                        answer = Console.ReadLine();
+                        for (int i = 0; i < products.Count; i++)
+                        {
+                            if (products[i].productName.Contains(answer))
+                            {
+                                try
+                                {
+                                    HeadingSetter();
+                                    inventoryDisplay(products);
+                                    Console.WriteLine($" {products[i].productName} costs ${products[i].productPrice}.\n What would you like to change it to?");
+                                    double changePrice = double.Parse(Console.ReadLine());
+                                    products[i].productPrice = (decimal)changePrice;
+                                    HeadingSetter();
+                                    inventoryDisplay(products);
+                                    Console.WriteLine($" {products[i].productName} price has been changed!");
+                                    Console.ReadKey();
+                                }
+                                catch (Exception)
+                                {
+
+                                    HeadingSetter();
+                                    Console.WriteLine("\n You entered an invalid price.\n You will be sent back to the admin menu.");
+                                    Console.ReadKey();
+                                }
+                            }
+                            else
+                            {
+                                HeadingSetter();
+                                Console.WriteLine("\n The product you entered is invalid.\n You will be sent back to the admin menu.");
+                            }
+                        }
+                        break;
+                    case ("4"):
+                        IsDone = true;
+                        break;
+                    default:
+                        HeadingSetter();
+                        Console.WriteLine("\n The admin code you entered was invalid.");
+                        Console.ReadKey();
+                        break;
+                }
+            } while (!IsDone);
+            return products;
         }
 
     }
