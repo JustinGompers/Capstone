@@ -33,7 +33,8 @@ namespace Capstone.Classes
                         try
                         {
                             Console.WriteLine("\n How much would you like to deposit?");
-                            decimal depositAmount = int.Parse(Console.ReadLine());
+                            double depositAnswer = double.Parse(Console.ReadLine());
+                            decimal depositAmount = (decimal)depositAnswer;
                             HeadingSetter();
                             decimal returnedDecimal = Deposit(depositAmount);
                             if (returnedDecimal != 0)
@@ -259,6 +260,7 @@ namespace Capstone.Classes
                             {
                                 HeadingSetter();
                                 Console.WriteLine("\n The product you entered is invalid.\n You will be sent back to the admin menu.");
+                                Console.ReadKey();
                             }
                         }
                         break;
