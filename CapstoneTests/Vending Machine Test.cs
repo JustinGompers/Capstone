@@ -24,10 +24,49 @@ namespace CapstoneTests
 
         }
         [TestMethod]
-        public void DepositWrongBillTest()
+        public void DepositTest2()
+        {
+
+            decimal input = 5.00m;
+
+            decimal output = 5.00m;
+
+            decimal result = testObject.Deposit(input);
+
+            Assert.AreEqual(output, result);
+
+        }
+        [TestMethod]
+        public void DepositWrongBillTest100()
         {
 
             decimal input = 100.00m;
+
+            decimal output = 0.00m;
+
+            decimal result = testObject.Deposit(input);
+
+            Assert.AreEqual(output, result);
+
+        }
+        [TestMethod]
+        public void DepositWrongBillTest50()
+        {
+
+            decimal input = 50.00m;
+
+            decimal output = 0.00m;
+
+            decimal result = testObject.Deposit(input);
+
+            Assert.AreEqual(output, result);
+
+        }
+        [TestMethod]
+        public void DepositWrongBillTest20()
+        {
+
+            decimal input = 20.00m;
 
             decimal output = 0.00m;
 
